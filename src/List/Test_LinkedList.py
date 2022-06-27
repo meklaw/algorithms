@@ -138,6 +138,34 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(test_list.tail, node2)
         self.assertEqual(test_list.len(), 2)
 
+        node = Node(5)
+        test_list = LinkedList()
+        test_list.add_in_tail(Node(1))
+        test_list.insert(test_list.find(1), node)
+        self.assertEqual(test_list.head.value, 1)
+        self.assertEqual(test_list.tail.value, 5)
+
+        node = Node(5)
+        test_list = LinkedList()
+        test_list.add_in_tail(Node(1))
+        test_list.add_in_tail(Node(10))
+        test_list.insert(test_list.find(1), node)
+        self.assertEqual(test_list.head.value, 1)
+        self.assertEqual(test_list.tail.value, 10)
+
+        node = Node(5)
+        test_list = LinkedList()
+        test_list.add_in_tail(Node(1))
+        test_list.insert(None, node)
+        self.assertEqual(test_list.head.value, 5)
+        self.assertEqual(test_list.tail.value, 1)
+
+        node = Node(5)
+        test_list = LinkedList()
+        test_list.insert(None, node)
+        self.assertEqual(test_list.head.value, 5)
+        self.assertEqual(test_list.tail.value, 5)
+
     def test_equals(self):
         test_list = LinkedList()
         test_list.add_in_tail(Node(1))

@@ -82,17 +82,18 @@ class LinkedList:
         return self.size
 
     def insert(self, afterNode, newNode):
-        if afterNode is not None:
-            newNode.next = afterNode.next
-            afterNode.next = newNode
-            if afterNode == self.tail:
-                self.tail = afterNode
-        else:
-            newNode.next = self.head
-            self.head = newNode
-            if self.size == 0:
-                self.tail = newNode
-        self.size += 1
+        if newNode is not None:
+            if afterNode is not None:
+                newNode.next = afterNode.next
+                afterNode.next = newNode
+                if afterNode == self.tail:
+                    self.tail = newNode
+            else:
+                newNode.next = self.head
+                self.head = newNode
+                if self.size == 0:
+                    self.tail = newNode
+            self.size += 1
 
     def equals(self, another):
         if self.size != another.size:
