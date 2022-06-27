@@ -49,12 +49,12 @@ class LinkedList:
             if last_node.value == val:
                 if self.size == 1:
                     self.clean()
-                    return
+                    return None
                 else:
                     self.head = last_node.next
                     self.size -= 1
                     if not all:
-                        return
+                        return None
                     else:
                         return self.delete(val, all)
             node = last_node.next
@@ -67,7 +67,7 @@ class LinkedList:
                         last_node.next = node.next
                     self.size -= 1
                     if not all:
-                        return
+                        return None
                     else:
                         return self.delete(val, all)
                 last_node = node
@@ -126,4 +126,4 @@ class LinkedList:
             return result
         elif a_list.len == 0 and b_list.len == 0:
             return LinkedList()
-        return
+        return None
