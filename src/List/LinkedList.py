@@ -126,3 +126,4 @@ class LinkedList:
             return result
         elif a_list.len == 0 and b_list.len == 0:
             return LinkedList()
+        return
