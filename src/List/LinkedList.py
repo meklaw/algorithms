@@ -115,15 +115,13 @@ class LinkedList:
 
     @staticmethod
     def sum_list(a_list, b_list):
-        if a_list.len() == b_list.len() and a_list.len != 0:
-            result = LinkedList()
-            a_node = a_list.head
-            b_node = b_list.head
-            while a_node is not None:
-                result.add_in_tail(Node(a_node.value + b_node.value))
-                a_node = a_node.next
-                b_node = b_node.next
-            return result
-        elif a_list.len == 0 and b_list.len == 0:
-            return LinkedList()
-        return None
+        if a_list.len() != b_list.len():
+            return None
+        result = LinkedList()
+        a_node = a_list.head
+        b_node = b_list.head
+        while a_node is not None:
+            result.add_in_tail(Node(a_node.value + b_node.value))
+            a_node = a_node.next
+            b_node = b_node.next
+        return result

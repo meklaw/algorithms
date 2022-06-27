@@ -195,3 +195,31 @@ class TestLinkedList(unittest.TestCase):
 
         correct_list = LinkedList()
         self.assertIsNone(LinkedList.sum_list(test_list, correct_list))
+
+        test_list = LinkedList()
+
+        correct_list = LinkedList()
+        self.assertIsNotNone(LinkedList.sum_list(test_list, correct_list))
+
+        test_list = LinkedList()
+        test_list.add_in_tail(Node(15))
+
+        correct_list = LinkedList()
+        correct_list.add_in_tail(Node(30))
+        self.assertEqual(LinkedList.sum_list(test_list, correct_list).head.value, 45)
+        self.assertEqual(LinkedList.sum_list(test_list, correct_list).tail.value, 45)
+        self.assertEqual(LinkedList.sum_list(test_list, correct_list).len(), 1)
+
+        test_list = LinkedList()
+        test_list.add_in_tail(Node(15))
+        test_list.add_in_tail(Node(20))
+        test_list.add_in_tail(Node(-100))
+
+        correct_list = LinkedList()
+        correct_list.add_in_tail(Node(30))
+        correct_list.add_in_tail(Node(60))
+        correct_list.add_in_tail(Node(80))
+        self.assertEqual(LinkedList.sum_list(test_list, correct_list).head.value, 45)
+        self.assertEqual(LinkedList.sum_list(test_list, correct_list).head.next.value, 80)
+        self.assertEqual(LinkedList.sum_list(test_list, correct_list).tail.value, -20)
+        self.assertEqual(LinkedList.sum_list(test_list, correct_list).len(), 3)
