@@ -177,5 +177,3 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(test_list.head.next.next.value, 20)
         self.assertEqual(test_list.head.next.next.next.value, 100)
         self.assertEqual(test_list.len(), 4)
-
-
