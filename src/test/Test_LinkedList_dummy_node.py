@@ -17,7 +17,6 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(test_list.tail.prev.prev.value, 20)
         self.assertEqual(test_list.tail.prev.prev.prev.value, 10)
 
-
     def test_find(self):
         test_list = LinkedList2()
         a_node = Node(5)
