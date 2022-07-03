@@ -44,6 +44,9 @@ class MyTestCase(unittest.TestCase):
         test_list.delete(10)
         test_list.delete(0)
         self.assertEqual(test_list.len(), 3)
+        list = LinkedList2()
+        list.add_in_tail(Node(3))
+        self.assertEqual(list.len(), 1)
 
     def test_delete(self):
         test_list = LinkedList2()

@@ -1,6 +1,6 @@
 import unittest
 
-from src.List.LinkedList_dummy_node import Node, LinkedList2
+from src.List.LinkedList_dummy_node import Node, LinkedList2, DummyNode
 
 
 class MyTestCase(unittest.TestCase):
@@ -166,6 +166,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(test_list.tail.prev.prev.value, 30)
         self.assertEqual(test_list.tail.prev.prev.prev.value, 10)
         test_list.insert(b_node, Node(100))
+        test_list.insert(b_node, 33)
+        test_list.insert(b_node, None)
+        test_list.insert(b_node, DummyNode())
         self.assertEqual(test_list.tail.prev.value, 100)
         self.assertEqual(test_list.tail.prev.prev.value, 20)
         self.assertEqual(test_list.tail.prev.prev.prev.value, 30)
@@ -175,6 +178,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(test_list.head.next.next.next.value, 20)
         self.assertEqual(test_list.head.next.next.next.next.value, 100)
         self.assertEqual(test_list.len(), 4)
+
 
     def test_add_in_head(self):
         test_list = LinkedList2()

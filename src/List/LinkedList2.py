@@ -6,13 +6,15 @@ class Node:
 
 
 class LinkedList2:
-    size = 0
 
     def __init__(self):
         self.head = None
         self.tail = None
+        self.size = 0
 
     def add_in_tail(self, item):
+        if not isinstance(item, Node):
+            return None
         self.size += 1
         if self.head is None:
             self.head = item
@@ -72,7 +74,7 @@ class LinkedList2:
         return self.size
 
     def insert(self, afterNode, newNode):
-        if newNode is None:
+        if newNode is None or not isinstance(newNode, Node):
             return None
         if afterNode is None or afterNode == self.tail:
             return self.add_in_tail(newNode)
@@ -83,6 +85,8 @@ class LinkedList2:
         self.size += 1
 
     def add_in_head(self, newNode):
+        if not isinstance(newNode, Node):
+            return None
         self.size += 1
         if self.tail is None:
             self.tail = newNode

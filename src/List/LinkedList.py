@@ -6,13 +6,15 @@ class Node:
 
 
 class LinkedList:
-    size = 0
 
     def __init__(self):
         self.head = None
         self.tail = None
+        self.size = 0
 
     def add_in_tail(self, item):
+        if not isinstance(item, Node):
+            return None
         self.size += 1
         if self.head is None:
             self.head = item
@@ -82,6 +84,8 @@ class LinkedList:
         return self.size
 
     def insert(self, afterNode, newNode):
+        if not isinstance(newNode, Node):
+            return None
         if newNode is not None:
             if afterNode is not None:
                 newNode.next = afterNode.next
