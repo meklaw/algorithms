@@ -121,6 +121,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_clean(self):
         test_list = LinkedList2()
+        list = test_list
         test_list.add_in_tail(Node(10))
         test_list.add_in_tail(Node(20))
         test_list.add_in_tail(Node(30))
@@ -130,6 +131,7 @@ class MyTestCase(unittest.TestCase):
         self.assertIsNone(test_list.tail.value)
         self.assertIsNone(test_list.tail.prev.value)
         self.assertEqual(test_list.len(), 0)
+        self.assertEqual(test_list, list)
 
     def test_len(self):
         test_list = LinkedList2()
@@ -178,7 +180,6 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(test_list.head.next.next.next.value, 20)
         self.assertEqual(test_list.head.next.next.next.next.value, 100)
         self.assertEqual(test_list.len(), 4)
-
 
     def test_add_in_head(self):
         test_list = LinkedList2()

@@ -46,16 +46,17 @@ class LinkedList2:
         return result
 
     def delete(self, val, all=False):
-        if self.len() != 0:
-            node = self.head.next
-            while node is not None:
-                if node.value == val and not isinstance(node, DummyNode):
-                    node.prev.next = node.next
-                    node.next.prev = node.prev
-                    self.size -= 1
-                    if not all:
-                        return None
-                node = node.next
+        if self.len() == 0:
+            return None
+        node = self.head.next
+        while node is not None:
+            if node.value == val and not isinstance(node, DummyNode):
+                node.prev.next = node.next
+                node.next.prev = node.prev
+                self.size -= 1
+                if not all:
+                    return None
+            node = node.next
 
     def clean(self):
         self.__init__()
