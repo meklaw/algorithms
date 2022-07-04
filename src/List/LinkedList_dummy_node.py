@@ -21,7 +21,7 @@ class LinkedList2:
 
     def add_in_tail(self, newNode):
         if not isinstance(newNode, Node) or isinstance(newNode, DummyNode):
-            return None
+            return
         self.size += 1
         newNode.next = self.tail
         newNode.prev = self.tail.prev
@@ -47,7 +47,7 @@ class LinkedList2:
 
     def delete(self, val, all=False):
         if self.len() == 0:
-            return None
+            return
         node = self.head.next
         while node is not None:
             if node.value == val and not isinstance(node, DummyNode):
@@ -55,7 +55,7 @@ class LinkedList2:
                 node.next.prev = node.prev
                 self.size -= 1
                 if not all:
-                    return None
+                    return
             node = node.next
 
     def clean(self):
@@ -66,9 +66,10 @@ class LinkedList2:
 
     def insert(self, afterNode, newNode):
         if newNode is None or not isinstance(newNode, Node) or isinstance(newNode, DummyNode):
-            return None
+            return
         if afterNode is None or afterNode == self.tail.prev:
-            return self.add_in_tail(newNode)
+            self.add_in_tail(newNode)
+            return
         newNode.next = afterNode.next
         newNode.prev = afterNode
         newNode.next.prev = newNode
@@ -77,7 +78,7 @@ class LinkedList2:
 
     def add_in_head(self, newNode):
         if not isinstance(newNode, Node) or isinstance(newNode, DummyNode):
-            return None
+            return
         self.size += 1
         newNode.next = self.head.next
         newNode.prev = self.head

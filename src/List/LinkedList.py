@@ -14,7 +14,7 @@ class LinkedList:
 
     def add_in_tail(self, item):
         if not isinstance(item, Node):
-            return None
+            return
         self.size += 1
         if self.head is None:
             self.head = item
@@ -46,46 +46,46 @@ class LinkedList:
         return result
 
     def delete(self, val, all=False):
-        if self.size != 0:
-            last_node = self.head
-            if last_node.value == val:
-                if self.size == 1:
-                    self.clean()
+        if self.size == 0:
+            return
+        last_node = self.head
+        if last_node.value == val:
+            if self.size == 1:
+                self.clean()
+                return
+            else:
+                self.head = last_node.next
+                self.size -= 1
+                if not all:
+                    return
+                else:
+                    self.delete(val, all)
+                    return
+        node = last_node.next
+        while node is not None:
+            if node.value == val:
+                if node == self.tail:
+                    self.tail = last_node
+                    last_node.next = None
+                else:
+                    last_node.next = node.next
+                self.size -= 1
+                if not all:
                     return None
                 else:
-                    self.head = last_node.next
-                    self.size -= 1
-                    if not all:
-                        return None
-                    else:
-                        return self.delete(val, all)
-            node = last_node.next
-            while node is not None:
-                if node.value == val:
-                    if node == self.tail:
-                        self.tail = last_node
-                        last_node.next = None
-                    else:
-                        last_node.next = node.next
-                    self.size -= 1
-                    if not all:
-                        return None
-                    else:
-                        return self.delete(val, all)
-                last_node = node
-                node = node.next
+                    return self.delete(val, all)
+            last_node = node
+            node = node.next
 
     def clean(self):
-        self.head = None
-        self.tail = None
-        self.size = 0
+        self.__init__()
 
     def len(self):
         return self.size
 
     def insert(self, afterNode, newNode):
         if not isinstance(newNode, Node):
-            return None
+            return
         if newNode is not None:
             if afterNode is not None:
                 newNode.next = afterNode.next
