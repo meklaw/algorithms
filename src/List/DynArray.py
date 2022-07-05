@@ -57,10 +57,10 @@ class DynArray:
             self.array[index - 1] = self.array[index]
         self.count -= 1
         if self.count < self.capacity * 0.5 and self.capacity != 16:
-            newSize = self.capacity * 10 // 15
-            if newSize < 16:
-                newSize = 16
-            self.resize(newSize)
+            new_size = self.capacity * 10 // 15
+            if new_size < 16:
+                new_size = 16
+            self.resize(new_size)
 
     def print(self):
         for i in range(self.count):
