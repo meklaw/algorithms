@@ -83,5 +83,5 @@ class Stack:
                 b = second_stack.pop()
                 a = second_stack.pop()
                 second_stack.push(a / b)
-                continue
+
         return second_stack.pop()
