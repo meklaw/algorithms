@@ -69,9 +69,13 @@ class Stack:
             elif i == '+':
                 second_stack.push(second_stack.pop() + second_stack.pop())
             elif i == '-':
-                second_stack.push(second_stack.pop() - second_stack.pop())
+                b = second_stack.pop()
+                a = second_stack.pop()
+                second_stack.push(a - b)
             elif i == '*':
                 second_stack.push(second_stack.pop() * second_stack.pop())
             elif i == '/':
-                second_stack.push(second_stack.pop() / second_stack.pop())
+                b = second_stack.pop()
+                a = second_stack.pop()
+                second_stack.push(a / b)
         return second_stack.pop()

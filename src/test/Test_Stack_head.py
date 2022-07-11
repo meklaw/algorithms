@@ -62,3 +62,15 @@ class TestStackHead(unittest.TestCase):
         test_stack.push('2')
         test_stack.push('8')
         self.assertEqual(Stack.postfix_calc(test_stack), 59)
+
+        test_stack = Stack()
+        test_stack.push('-')
+        test_stack.push('2')
+        test_stack.push('8')
+        self.assertEqual(Stack.postfix_calc(test_stack), 6)
+
+        test_stack = Stack()
+        test_stack.push('/')
+        test_stack.push('2')
+        test_stack.push('8')
+        self.assertEqual(Stack.postfix_calc(test_stack), 4)
