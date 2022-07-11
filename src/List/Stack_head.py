@@ -27,13 +27,13 @@ class Stack:
         return result
 
     def push(self, value):
-        newNode = Node(value)
+        new_node = Node(value)
         self.length += 1
         if self.tail is None:
-            self.tail = newNode
+            self.tail = new_node
         else:
-            newNode.next = self.head
-        self.head = newNode
+            new_node.next = self.head
+        self.head = new_node
 
     def peek(self):
         if self.size() == 0:
@@ -48,7 +48,8 @@ class Stack:
         for i in string:
             if i == '(':
                 stack.push(i)
-            elif i == ')':
+                continue
+            if i == ')':
                 if stack.pop() != '(':
                     return False
         if stack.size() == 0:
@@ -62,20 +63,25 @@ class Stack:
         second_stack = Stack()
         while first_stack.size() != 0:
             i = first_stack.pop()
+            if i == '=':
+                return second_stack.pop()
             if i.isdigit():
                 second_stack.push(int(i))
-            elif i == '=':
-                return second_stack.pop()
-            elif i == '+':
+                continue
+            if i == '+':
                 second_stack.push(second_stack.pop() + second_stack.pop())
-            elif i == '-':
+                continue
+            if i == '-':
                 b = second_stack.pop()
                 a = second_stack.pop()
                 second_stack.push(a - b)
-            elif i == '*':
+                continue
+            if i == '*':
                 second_stack.push(second_stack.pop() * second_stack.pop())
-            elif i == '/':
+                continue
+            if i == '/':
                 b = second_stack.pop()
                 a = second_stack.pop()
                 second_stack.push(a / b)
+                continue
         return second_stack.pop()
