@@ -68,20 +68,18 @@ class Stack:
             if i.isdigit():
                 second_stack.push(int(i))
                 continue
+            b = second_stack.pop()
+            a = second_stack.pop()
             if i == '+':
-                second_stack.push(second_stack.pop() + second_stack.pop())
+                second_stack.push(a + b)
                 continue
             if i == '-':
-                b = second_stack.pop()
-                a = second_stack.pop()
                 second_stack.push(a - b)
                 continue
             if i == '*':
-                second_stack.push(second_stack.pop() * second_stack.pop())
+                second_stack.push(a * b)
                 continue
             if i == '/':
-                b = second_stack.pop()
-                a = second_stack.pop()
                 second_stack.push(a / b)
 
         return second_stack.pop()
