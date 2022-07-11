@@ -49,9 +49,8 @@ class Stack:
             if i == '(':
                 stack.push(i)
                 continue
-            if i == ')':
-                if stack.pop() != '(':
-                    return False
+            if i == ')' and stack.pop() != '(':
+                return False
         if stack.size() == 0:
             return True
         return False
