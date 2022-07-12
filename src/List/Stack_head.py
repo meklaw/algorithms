@@ -49,11 +49,12 @@ class Stack:
             if i == '(':
                 stack.push(i)
                 continue
-            if i == ')' and stack.pop() != '(':
-                return False
-        if stack.size() == 0:
-            return True
-        return False
+            if i == ')':
+                if stack.peek() is None:
+                    return False
+                stack.pop()
+
+        return stack.size() == 0
 
     @staticmethod
     def postfix_calc(first_stack):
