@@ -1,0 +1,82 @@
+import unittest
+
+from src.Queue.Queue import Queue
+
+
+class TestQueue(unittest.TestCase):
+    def test_enqueue(self):
+        queue = Queue()
+        queue.enqueue(1)
+        self.assertEqual(queue.head.value, 1)
+        self.assertEqual(queue.tail.value, 1)
+        self.assertEqual(queue.head, queue.tail)
+        queue.enqueue(5)
+        self.assertEqual(queue.head.value, 1)
+        self.assertEqual(queue.tail.value, 5)
+        self.assertEqual(queue.head.next.value, 5)
+        queue.enqueue(10)
+        self.assertEqual(queue.head.value, 1)
+        self.assertEqual(queue.head.next.value, 5)
+        self.assertEqual(queue.head.next.next.value, 10)
+        self.assertEqual(queue.tail.value, 10)
+
+    def test_dequeue(self):
+        queue = Queue()
+        queue.enqueue(1)
+        queue.enqueue(5)
+        queue.enqueue(10)
+        self.assertEqual(queue.dequeue(), 1)
+        self.assertEqual(queue.dequeue(), 5)
+        self.assertEqual(queue.dequeue(), 10)
+        self.assertEqual(queue.dequeue(), None)
+
+    def test_size(self):
+        queue = Queue()
+        queue.enqueue(1)
+        queue.enqueue(5)
+        queue.enqueue(10)
+        self.assertEqual(queue.size(), 3)
+        queue.dequeue()
+        queue.dequeue()
+        queue.dequeue()
+        self.assertEqual(queue.size(), 0)
+
+    def test_rotate(self):
+        queue = Queue()
+        queue.enqueue(1)
+        queue.enqueue(5)
+        queue.enqueue(10)
+        queue.enqueue(25)
+        queue.enqueue(50)
+        queue.rotate(5)
+        self.assertEqual(queue.dequeue(), 1)
+        self.assertEqual(queue.dequeue(), 5)
+        self.assertEqual(queue.dequeue(), 10)
+        self.assertEqual(queue.dequeue(), 25)
+        self.assertEqual(queue.dequeue(), 50)
+
+        queue = Queue()
+        queue.enqueue(1)
+        queue.enqueue(5)
+        queue.enqueue(10)
+        queue.enqueue(25)
+        queue.enqueue(50)
+        queue.rotate(3)
+        self.assertEqual(queue.dequeue(), 25)
+        self.assertEqual(queue.dequeue(), 50)
+        self.assertEqual(queue.dequeue(), 1)
+        self.assertEqual(queue.dequeue(), 5)
+        self.assertEqual(queue.dequeue(), 10)
+
+        queue = Queue()
+        queue.enqueue(1)
+        queue.enqueue(5)
+        queue.enqueue(10)
+        queue.enqueue(25)
+        queue.enqueue(50)
+        queue.rotate(8)
+        self.assertEqual(queue.dequeue(), 25)
+        self.assertEqual(queue.dequeue(), 50)
+        self.assertEqual(queue.dequeue(), 1)
+        self.assertEqual(queue.dequeue(), 5)
+        self.assertEqual(queue.dequeue(), 10)
