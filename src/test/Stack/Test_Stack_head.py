@@ -1,6 +1,6 @@
 import unittest
 
-from src.List.Stack_head import Stack
+from src.Stack.Stack_head import Stack
 
 
 class TestStackHead(unittest.TestCase):

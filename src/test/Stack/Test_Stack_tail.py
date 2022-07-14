@@ -1,6 +1,6 @@
 import unittest
 
-from src.List.Stack_tail import Stack
+from src.Stack.Stack_tail import Stack
 
 
 class TestStackTail(unittest.TestCase):
