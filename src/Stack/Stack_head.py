@@ -50,7 +50,7 @@ class Stack:
                 stack.push(i)
                 continue
             if i == ')':
-                if stack.peek() is None:
+                if stack.size() == 0:
                     return False
                 stack.pop()
 
