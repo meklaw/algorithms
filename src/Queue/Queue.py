@@ -33,7 +33,5 @@ class Queue:
         return self.length
 
     def rotate(self, count):
-        if self.size() == 0 or self.size() == 1 or count == 0:
-            return
         for i in range(count % self.size()):
             self.enqueue(self.dequeue())
