@@ -63,3 +63,12 @@ class TestDeque(unittest.TestCase):
         self.assertEqual(deque.size(), 0)
         self.assertEqual(deque.removeTail(), None)
         self.assertEqual(deque.size(), 0)
+
+    def test_is_palindrome(self):
+        self.assertTrue(Deque.is_palindrome(""))
+        self.assertTrue(Deque.is_palindrome("a"))
+        self.assertTrue(Deque.is_palindrome("aba"))
+        self.assertTrue(Deque.is_palindrome("abcba"))
+        self.assertTrue(Deque.is_palindrome("abccba"))
+        self.assertFalse(Deque.is_palindrome("ab"))
+        self.assertFalse(Deque.is_palindrome("abaa"))
