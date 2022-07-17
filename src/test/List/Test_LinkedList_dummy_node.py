@@ -3,7 +3,7 @@ import unittest
 from src.List.LinkedList_dummy_node import Node, LinkedList2, DummyNode
 
 
-class MyTestCase(unittest.TestCase):
+class TestLinkedList2DummyNode(unittest.TestCase):
 
     def test_add_in_tail(self):
         test_list = LinkedList2()

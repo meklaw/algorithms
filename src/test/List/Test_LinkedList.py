@@ -3,7 +3,7 @@ import unittest
 from src.List.LinkedList import Node, LinkedList
 
 
-class TestCase(unittest.TestCase):
+class TestLinkedList(unittest.TestCase):
     def test_delete(self):
         correct_list = LinkedList()
         correct_list.add_in_tail(Node(-5))

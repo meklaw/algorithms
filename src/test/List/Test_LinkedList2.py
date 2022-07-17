@@ -3,7 +3,7 @@ import unittest
 from src.List.LinkedList2 import Node, LinkedList2
 
 
-class MyTestCase(unittest.TestCase):
+class TestLinkedList2(unittest.TestCase):
 
     def test_find(self):
         test_list = LinkedList2()
