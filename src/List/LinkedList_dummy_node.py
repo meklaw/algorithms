@@ -1,13 +1,13 @@
 class Node:
-    def __init__(self, v=None):
+    def __init__(self, v):
         self.value = v
         self.prev = None
         self.next = None
 
 
 class DummyNode(Node):
-    def __int__(self):
-        Node.__init__(self, None)
+    def __init__(self):
+        super().__init__(None)
 
 
 class LinkedList2:
@@ -30,8 +30,8 @@ class LinkedList2:
 
     def find(self, val):
         node = self.head.next
-        while node is not None:
-            if node.value == val and not isinstance(node, DummyNode):
+        while not isinstance(node, DummyNode):
+            if node.value == val :
                 return node
             node = node.next
         return None
@@ -39,8 +39,8 @@ class LinkedList2:
     def find_all(self, val):
         result = []
         node = self.head.next
-        while node is not None:
-            if node.value == val and not isinstance(node, DummyNode):
+        while not isinstance(node, DummyNode):
+            if node.value == val:
                 result.append(node)
             node = node.next
         return result
@@ -49,8 +49,8 @@ class LinkedList2:
         if self.len() == 0:
             return
         node = self.head.next
-        while node is not None:
-            if node.value == val and not isinstance(node, DummyNode):
+        while not isinstance(node, DummyNode):
+            if node.value == val:
                 node.prev.next = node.next
                 node.next.prev = node.prev
                 self.size -= 1
