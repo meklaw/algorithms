@@ -5,17 +5,10 @@ class Node:
         self.next = None
 
 
-class DummyNode(Node):
-    def __init__(self):
-        super().__init__(None)
-
-
 class OrderedList:
-    def __init__(self, asc: bool):
-        self.head = DummyNode()
-        self.tail = DummyNode()
-        self.head.next = self.tail
-        self.tail.prev = self.head
+    def __init__(self, asc):
+        self.head = None
+        self.tail = None
         self.__ascending = asc
         self.__size = 0
 
@@ -31,10 +24,11 @@ class OrderedList:
         new_node = Node(value)
         self.__size += 1
         if self.len() == 1:
-            self.__add_before_node(self.tail, new_node)
+            self.head = new_node
+            self.tail = new_node
             return
-        current_node = self.head.next
-        while not isinstance(current_node, DummyNode):
+        current_node = self.head
+        while current_node is not None:
             if self.__ascending and self.compare(current_node.value, value) >= 0:
                 self.__add_before_node(current_node, new_node)
                 return
@@ -42,11 +36,11 @@ class OrderedList:
                 self.__add_before_node(current_node, new_node)
                 return
             current_node = current_node.next
-        self.__add_before_node(self.tail, new_node)
+        self.__add_before_node(None, new_node)
 
     def find(self, val):
-        current_node = self.head.next
-        while not isinstance(current_node, DummyNode):
+        current_node = self.head
+        while current_node is not None:
             if self.__ascending and current_node.value > val:
                 return None
             if not self.__ascending and current_node.value < val:
@@ -58,17 +52,28 @@ class OrderedList:
         return None
 
     def delete(self, val):
-        current_node = self.head.next
-        while not isinstance(current_node, DummyNode):
+        current_node = self.head
+        while current_node is not None:
             if self.__ascending and current_node.value > val:
                 return
             if not self.__ascending and current_node.value < val:
                 return
             if current_node.value == val:
-                current_node.prev.next = current_node.next
-                current_node.next.prev = current_node.prev
+                if self.len() == 1:
+                    self.clean(self.__ascending)
+                    return
                 self.__size -= 1
-                return
+                if current_node == self.head:
+                    self.head = current_node.next
+                    self.head.prev = None
+                    return
+                if current_node == self.tail:
+                    self.tail = current_node.prev
+                    self.tail.next = None
+                    return
+                current_node.next.prev = current_node.prev
+                current_node.prev.next = current_node.next
+
             current_node = current_node.next
 
     def clean(self, asc):
@@ -80,22 +85,22 @@ class OrderedList:
     def get_all(self):
         r = []
         current_node = self.head.next
-        while not isinstance(current_node, DummyNode):
+        while current_node is not None:
             r.append(current_node)
             current_node = current_node.next
         return r
 
-    def __add_after_node(self, after_node: Node, new_node: Node):
-        if after_node is None:
-            after_node = self.head
-        new_node.prev = after_node
-        new_node.next = after_node.next
-        after_node.next.prev = new_node
-        after_node.next = new_node
-
     def __add_before_node(self, before_node: Node, new_node: Node):
         if before_node is None:
-            before_node = self.tail
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
+            return
+        if self.head == before_node:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+            return
         new_node.next = before_node
         new_node.prev = before_node.prev
         before_node.prev.next = new_node
@@ -106,7 +111,7 @@ class OrderedStringList(OrderedList):
     def __init__(self, asc):
         super(OrderedStringList, self).__init__(asc)
 
-    def compare(self, v1: str, v2: str):
+    def compare(self, v1, v2):
         v1 = v1.strip()
         v2 = v2.strip()
         if v1 < v2:
