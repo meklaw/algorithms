@@ -84,7 +84,7 @@ class OrderedList:
 
     def get_all(self):
         r = []
-        current_node = self.head.next
+        current_node = self.head
         while current_node is not None:
             r.append(current_node)
             current_node = current_node.next
