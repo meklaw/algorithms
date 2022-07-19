@@ -64,11 +64,11 @@ class OrderedList:
                     return
                 self.__size -= 1
                 if current_node == self.head:
-                    self.head = current_node.next
+                    self.head = self.head.next
                     self.head.prev = None
                     return
                 if current_node == self.tail:
-                    self.tail = current_node.prev
+                    self.tail = self.tail.prev
                     self.tail.next = None
                     return
                 current_node.next.prev = current_node.prev
