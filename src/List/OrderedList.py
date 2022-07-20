@@ -54,26 +54,13 @@ class OrderedList:
     def delete(self, val):
         current_node = self.head
         while current_node is not None:
-            if self.__ascending and current_node.value > val:
+            if self.__ascending and self.compare(current_node.value, val) > 0:
                 return
-            if not self.__ascending and current_node.value < val:
+            if not self.__ascending and self.compare(current_node.value, val) < 0:
                 return
-            if current_node.value == val:
-                if self.len() == 1:
-                    self.clean(self.__ascending)
-                    return
-                self.__size -= 1
-                if current_node == self.head:
-                    self.head = self.head.next
-                    self.head.prev = None
-                    return
-                if current_node == self.tail:
-                    self.tail = self.tail.prev
-                    self.tail.next = None
-                    return
-                current_node.next.prev = current_node.prev
-                current_node.prev.next = current_node.next
-
+            if self.compare(current_node.value, val) == 0:
+                self.__delete_node(current_node)
+                return
             current_node = current_node.next
 
     def clean(self, asc):
@@ -105,6 +92,23 @@ class OrderedList:
         new_node.prev = before_node.prev
         before_node.prev.next = new_node
         before_node.prev = new_node
+
+    def __delete_node(self, node: Node):
+        if self.len() == 1:
+            self.clean(self.__ascending)
+            return
+        self.__size -= 1
+        if node == self.head:
+            self.head = self.head.next
+            self.head.prev = None
+            return
+        if node == self.tail:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            return
+        node.next.prev = node.prev
+        node.prev.next = node.next
+
 
 
 class OrderedStringList(OrderedList):

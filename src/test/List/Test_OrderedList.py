@@ -264,6 +264,17 @@ class TestOrderedList(unittest.TestCase):
         self.assertEqual(list.len(), 0)
 
 
+        list = OrderedList(True)
+        list.add(5)
+        list.add(5)
+        list.add(10)
+        list.delete(5)
+        self.assertEqual(list.head.value, 5)
+        self.assertEqual(list.head.next.value, 10)
+        self.assertEqual(list.tail.prev.value, 5)
+        self.assertEqual(list.tail.value, 10)
+
+
     def test_clean(self):
         list = OrderedList(True)
         list.add(5)
