@@ -295,3 +295,16 @@ class TestOrderedStringList(unittest.TestCase):
         self.assertEqual(list.compare("apple            ", "banana"), -1)
         self.assertEqual(list.compare("apple", "apple"), 0)
         self.assertEqual(list.compare("apple    ", "apple"), 0)
+
+    def test_delete(self):
+        list = OrderedStringList(True)
+        list.add("Apple")
+        list.add("banana")
+        list.add("apple")
+        list.add("     apple")
+
+        list.delete("apple")
+        self.assertEqual(list.len(), 3)
+
+        list.delete("apple")
+        self.assertEqual(list.len(), 2)
