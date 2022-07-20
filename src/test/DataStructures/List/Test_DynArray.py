@@ -1,6 +1,6 @@
 import unittest
 
-from src.List.DynArray import DynArray
+from src.DataStructures.List.DynArray import DynArray
 
 
 class TestDynArray(unittest.TestCase):

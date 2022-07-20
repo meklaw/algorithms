@@ -1,6 +1,6 @@
 import unittest
 
-from src.List.OrderedList import OrderedList, Node, OrderedStringList
+from src.DataStructures.List.OrderedList import OrderedList, Node, OrderedStringList
 
 
 class TestOrderedList(unittest.TestCase):

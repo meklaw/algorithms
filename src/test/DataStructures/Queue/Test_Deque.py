@@ -1,6 +1,6 @@
 import unittest
 
-from src.Queue.Deque import Deque
+from src.DataStructures.Queue.Deque import Deque
 
 
 class TestDeque(unittest.TestCase):

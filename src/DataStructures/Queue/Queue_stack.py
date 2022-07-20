@@ -1,4 +1,4 @@
-from src.Stack.Stack_head import Stack
+from src.DataStructures.Stack.Stack_head import Stack
 
 
 class Queue:

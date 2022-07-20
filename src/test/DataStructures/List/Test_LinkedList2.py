@@ -1,6 +1,6 @@
 import unittest
 
-from src.List.LinkedList2 import Node, LinkedList2
+from src.DataStructures.List.LinkedList2 import Node, LinkedList2
 
 
 class TestLinkedList2(unittest.TestCase):
