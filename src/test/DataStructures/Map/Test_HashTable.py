@@ -18,7 +18,16 @@ class TestHashTable(unittest.TestCase):
         # collision
         # print(table.hash_fun("z"))
         # print(table.hash_fun("434525"))
-
+        table = HashTable(600_000, 3)
+        print(table.hash_fun("0"))
+        print(table.hash_fun("a"))
+        print(table.hash_fun("b"))
+        print(table.hash_fun("aa"))
+        print(table.hash_fun("ba"))
+        print(table.hash_fun("ab"))
+        print(table.hash_fun("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
+        print(table.hash_fun("zzz"))
+        # self.assertTrue(table.hash_fun("aaa") < table.size)
     def test_seek_slot(self):
         table = HashTable(7, 3)
         table.slots[0] = "a"
