@@ -196,16 +196,61 @@ class TestPowerSet(unittest.TestCase):
         set2.put("555")
 
         res = set1.difference(set2)
-        self.assertEqual(res.size(), 2)
-        self.assertTrue(res.get("555"))
+        self.assertEqual(res.size(), 1)
         self.assertTrue(res.get("12345"))
+        self.assertFalse(res.get("555"))
         self.assertFalse(res.get("123"))
+
+        set1 = PowerSet()
+        set1.put(1)
+        set1.put(2)
+        set1.put(3)
+
+        set2 = PowerSet()
+        set2.put(3)
+        set2.put(4)
+        set2.put(5)
+
+        res = set1.difference(set2)
+        self.assertEqual(res.size(), 2)
+        self.assertTrue(res.get(1))
+        self.assertTrue(res.get(2))
+        self.assertFalse(res.get(3))
+        self.assertFalse(res.get(4))
+        self.assertFalse(res.get(5))
+
+        set1 = PowerSet()
+
+        set2 = PowerSet()
+        set2.put(3)
+        set2.put(4)
+        set2.put(5)
+
+        res = set1.difference(set2)
+        self.assertEqual(res.size(), 0)
+        self.assertFalse(res.get(3))
+        self.assertFalse(res.get(4))
+        self.assertFalse(res.get(5))
+
+        set1 = PowerSet()
+        set1.put(1)
+        set1.put(2)
+        set1.put(3)
+
+        set2 = PowerSet()
+
+        res = set1.difference(set2)
+        self.assertEqual(res.size(), 3)
+        self.assertTrue(res.get(1))
+        self.assertTrue(res.get(2))
+        self.assertTrue(res.get(3))
 
     def test_issubset(self):
         set1 = PowerSet()
         set2 = PowerSet()
         set1.put("123")
         set1.put("12345")
+        self.assertEqual(set1.issubset(set2), True)
         set2.put("123")
         self.assertEqual(set1.issubset(set2), True)
 
@@ -213,3 +258,10 @@ class TestPowerSet(unittest.TestCase):
         set1 = PowerSet()
         for i in range(0, 20_000):
             set1.put(i)
+        set2 = PowerSet()
+        for i in range(10_000, 30_000):
+            set2.put(i)
+        set3 = set1.union(set2)
+        self.assertEqual(set1.issubset(set2), False)
+        self.assertEqual(set3.issubset(set2), True)
+        self.assertEqual(set3.issubset(set1), True)

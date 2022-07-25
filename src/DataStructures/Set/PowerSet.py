@@ -119,9 +119,6 @@ class PowerSet:
         for i in self.slots:
             if not set2.get(i):
                 result.put(i)
-        for i in set2.slots:
-            if not self.get(i):
-                result.put(i)
         return result
 
     def issubset(self, set2):
