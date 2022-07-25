@@ -1,6 +1,6 @@
 import unittest
 
-from src.DataStructures.Map.NativeDictionary import NativeDictionary
+from src.DataStructures.Hash.NativeDictionary import NativeDictionary
 
 
 class TestNativeDictionary(unittest.TestCase):

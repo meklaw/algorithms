@@ -1,6 +1,6 @@
 import unittest
 
-from src.DataStructures.Map.HashTable import HashTable
+from src.DataStructures.Hash.HashTable import HashTable
 
 
 class TestHashTable(unittest.TestCase):
