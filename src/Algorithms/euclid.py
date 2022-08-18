@@ -1,4 +1,4 @@
-def euclidGCD(a: int, b: int):
+def euclidGCD(a: int, b: int) -> int:
     if a == 0:
         return b
     if b == 0:

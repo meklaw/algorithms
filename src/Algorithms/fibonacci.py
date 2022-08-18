@@ -1,4 +1,4 @@
-def fib(n: int):
+def fib(n: int) -> int:
     if n == 0:
         return 0
     if n == 1:
@@ -12,7 +12,7 @@ def fib(n: int):
     return b
 
 
-def fib_digit(n: int):
+def fib_digit(n: int) -> int:
     if n == 0:
         return 0
     if n == 1:
@@ -26,7 +26,7 @@ def fib_digit(n: int):
     return b
 
 
-def fib_mod(n: int, m: int):
+def fib_mod(n: int, m: int) -> int:
     if n == 0:
         return 0
     if n == 1:
