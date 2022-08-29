@@ -110,12 +110,11 @@ class OrderedList:
         node.prev.next = node.next
 
 
-
 class OrderedStringList(OrderedList):
     def __init__(self, asc):
         super(OrderedStringList, self).__init__(asc)
 
-    def compare(self, v1, v2):
+    def compare(self, v1: str, v2: str) -> int:
         v1 = v1.strip()
         v2 = v2.strip()
         if v1 < v2:
