@@ -3,6 +3,7 @@ import unittest
 from src.Algorithms.recursion.recursion_1 import power
 from src.Algorithms.recursion.recursion_2 import sum_of_nums
 from src.Algorithms.recursion.recursion_3 import len_of_list
+from src.Algorithms.recursion.recursion_4 import is_str_palindrome
 
 
 class TestRecursion(unittest.TestCase):
@@ -31,3 +32,12 @@ class TestRecursion(unittest.TestCase):
         self.assertEqual(0, len_of_list([]))
         self.assertEqual(1, len_of_list([1]))
         self.assertEqual(3, len_of_list([1, "3", [1, 2]]))
+
+    def test_is_str_palindrome(self):
+        self.assertEqual(True, is_str_palindrome("aba"))
+        self.assertEqual(True, is_str_palindrome("a"))
+        self.assertEqual(True, is_str_palindrome("abbba"))
+        self.assertEqual(True, is_str_palindrome("abccba"))
+        self.assertEqual(False, is_str_palindrome("abc"))
+        self.assertEqual(False, is_str_palindrome("ab"))
+
