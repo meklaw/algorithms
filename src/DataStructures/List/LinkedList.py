@@ -12,9 +12,7 @@ class LinkedList:
         self.tail = None
         self.size = 0
 
-    def add_in_tail(self, item):
-        if not isinstance(item, Node):
-            return
+    def add_in_tail(self, item: Node):
         self.size += 1
         if self.head is None:
             self.head = item
@@ -80,26 +78,25 @@ class LinkedList:
     def clean(self):
         self.__init__()
 
-    def len(self):
+    def len(self) -> int:
         return self.size
 
-    def insert(self, afterNode, newNode):
-        if not isinstance(newNode, Node):
+    def insert(self, afterNode: Node, newNode: Node) -> None:
+        if newNode is None:
             return
-        if newNode is not None:
-            if afterNode is not None:
-                newNode.next = afterNode.next
-                afterNode.next = newNode
-                if afterNode == self.tail:
-                    self.tail = newNode
-            else:
-                newNode.next = self.head
-                self.head = newNode
-                if self.size == 0:
-                    self.tail = newNode
-            self.size += 1
+        if afterNode is not None:
+            newNode.next = afterNode.next
+            afterNode.next = newNode
+            if afterNode == self.tail:
+                self.tail = newNode
+        else:
+            newNode.next = self.head
+            self.head = newNode
+            if self.size == 0:
+                self.tail = newNode
+        self.size += 1
 
-    def equals(self, another):
+    def equals(self, another) -> bool:
         if self.size != another.size:
             return False
         if self.size == 0 and another.size == 0:
@@ -117,15 +114,15 @@ class LinkedList:
             b_node = b_node.next
         return True
 
-    @staticmethod
-    def sum_list(a_list, b_list):
-        if a_list.len() != b_list.len():
-            return None
-        result = LinkedList()
-        a_node = a_list.head
-        b_node = b_list.head
-        while a_node is not None:
-            result.add_in_tail(Node(a_node.value + b_node.value))
-            a_node = a_node.next
-            b_node = b_node.next
-        return result
+
+def sum_list(a_list: LinkedList, b_list: LinkedList) -> LinkedList | None:
+    if a_list.len() != b_list.len():
+        return None
+    result = LinkedList()
+    a_node = a_list.head
+    b_node = b_list.head
+    while a_node is not None:
+        result.add_in_tail(Node(a_node.value + b_node.value))
+        a_node = a_node.next
+        b_node = b_node.next
+    return result
