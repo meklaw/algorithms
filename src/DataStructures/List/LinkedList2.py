@@ -25,7 +25,7 @@ class LinkedList2:
             item.prev = self.tail
         self.tail = item
 
-    def find(self, val):
+    def find(self, val) -> Node | None:
         node = self.head
         while node is not None:
             if node.value == val:
@@ -33,7 +33,7 @@ class LinkedList2:
             node = node.next
         return None
 
-    def find_all(self, val):
+    def find_all(self, val) -> []:
         result = []
         node = self.head
         while node is not None:
@@ -43,7 +43,7 @@ class LinkedList2:
 
         return result
 
-    def delete(self, val, all=False):
+    def delete(self, val, all=False) -> None:
         current_node = self.head
         while current_node is not None:
             if current_node.value == val:
@@ -52,7 +52,7 @@ class LinkedList2:
                     return
             current_node = current_node.next
 
-    def __delete_node(self, node: Node):
+    def __delete_node(self, node: Node) -> None:
         if self.len() == 1:
             self.clean()
             return
@@ -74,25 +74,23 @@ class LinkedList2:
     def len(self):
         return self.size
 
-    def insert(self, afterNode, newNode):
-        if newNode is None or not isinstance(newNode, Node):
+    def insert(self, after_node: Node, new_node: Node) -> None:
+        if new_node is None or not isinstance(new_node, Node):
             return
-        if afterNode is None or afterNode == self.tail:
-            self.add_in_tail(newNode)
+        if after_node is None or after_node == self.tail:
+            self.add_in_tail(new_node)
             return
-        newNode.next = afterNode.next
-        newNode.prev = afterNode
-        newNode.next.prev = newNode
-        afterNode.next = newNode
+        new_node.next = after_node.next
+        new_node.prev = after_node
+        new_node.next.prev = new_node
+        after_node.next = new_node
         self.size += 1
 
-    def add_in_head(self, newNode):
-        if not isinstance(newNode, Node):
-            return
+    def add_in_head(self, new_node: Node) -> None:
         self.size += 1
         if self.tail is None:
-            self.tail = newNode
+            self.tail = new_node
         else:
-            newNode.next = self.head
-            self.head.prev = newNode
-        self.head = newNode
+            new_node.next = self.head
+            self.head.prev = new_node
+        self.head = new_node
