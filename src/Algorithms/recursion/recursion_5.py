@@ -1,7 +1,10 @@
-def print_every_second(array:list):
+def print_even_elements(array: list):
     try:
-        array.pop(0)
-        print(array.pop(0))
+        element = array.pop()
+        if element % 2 == 0:
+            print(element)
     except IndexError:
         return
-    print_every_second(array)
+    except TypeError:
+        pass
+    print_even_elements(array)
