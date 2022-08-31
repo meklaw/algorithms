@@ -4,6 +4,7 @@ from src.Algorithms.recursion.recursion_1 import power
 from src.Algorithms.recursion.recursion_2 import sum_of_nums
 from src.Algorithms.recursion.recursion_3 import len_of_list
 from src.Algorithms.recursion.recursion_4 import is_str_palindrome
+from src.Algorithms.recursion.recursion_5 import print_every_second
 
 
 class TestRecursion(unittest.TestCase):
@@ -40,4 +41,7 @@ class TestRecursion(unittest.TestCase):
         self.assertEqual(True, is_str_palindrome("abccba"))
         self.assertEqual(False, is_str_palindrome("abc"))
         self.assertEqual(False, is_str_palindrome("ab"))
+
+    def test_print_every_second(self):
+        print_every_second([1,2,3,4,5,6])
 
