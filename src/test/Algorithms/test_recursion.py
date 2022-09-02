@@ -6,6 +6,7 @@ from src.Algorithms.recursion.recursion_3 import len_of_list
 from src.Algorithms.recursion.recursion_4 import is_str_palindrome
 from src.Algorithms.recursion.recursion_5 import print_even_elements
 from src.Algorithms.recursion.recursion_6 import print_every_second
+from src.Algorithms.recursion.recursion_7 import find_max
 
 
 class TestRecursion(unittest.TestCase):
@@ -50,3 +51,15 @@ class TestRecursion(unittest.TestCase):
 
     def test_print_every_second(self):
         print_every_second([1, 2, 3, 4, 5, 6])
+
+    def test_find_max(self):
+        self.assertEqual(5, find_max([1, 2, 3, 4, 5, 6]))
+        self.assertEqual(6, find_max([1, 2, 3, 4, 5, 6, 6]))
+        self.assertEqual(2, find_max([2,2]))
+        self.assertEqual(2, find_max([2,2,2]))
+        self.assertEqual(2, find_max([2,1,2]))
+        self.assertEqual(1, find_max([1,1,2]))
+        self.assertEqual(None, find_max([]))
+        self.assertEqual(1, find_max([1, 2]))
+        self.assertEqual(1, find_max([2, 1]))
+
