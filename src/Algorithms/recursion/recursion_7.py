@@ -18,4 +18,7 @@ def find_max_recursion(array: list, first_max, second_max):
     if element >= first_max:
         second_max = first_max
         first_max = element
+        return find_max_recursion(array, first_max, second_max)
+    if element > second_max:
+        second_max = element
     return find_max_recursion(array, first_max, second_max)

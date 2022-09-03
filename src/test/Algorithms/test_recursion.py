@@ -56,6 +56,7 @@ class TestRecursion(unittest.TestCase):
     def test_find_max(self):
         self.assertEqual(5, find_max([1, 2, 3, 4, 5, 6]))
         self.assertEqual(6, find_max([1, 2, 3, 4, 5, 6, 6]))
+        self.assertEqual(15, find_max([1, 2, 3,15, 4, 5, 6, 100]))
         self.assertEqual(2, find_max([2, 2]))
         self.assertEqual(2, find_max([2, 2, 2]))
         self.assertEqual(2, find_max([2, 1, 2]))
